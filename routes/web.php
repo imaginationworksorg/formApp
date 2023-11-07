@@ -22,7 +22,7 @@ Route::get('threads/search', 'SearchController@show')->name('search.show');
 Route::get('threads/{channel}/{thread}', 'ThreadsController@show')->name('threads.show');
 Route::patch('threads/{channel}/{thread}', 'ThreadsController@update')->name('threads.update');
 Route::delete('threads/{channel}/{thread}', 'ThreadsController@destroy')->name('threads.destroy');
-Route::post('threads', 'ThreadsController@store')->name('threads.store');
+Route::post('threads', 'ThreadsController@store')->middleware('must-be-confirmed')->name('threads.store');
 Route::get('threads/{channel}', 'ThreadsController@index')->name('channels');
 
 Route::post('locked-threads/{thread}', 'LockedThreadsController@store')->name('locked-threads.store')->middleware('admin');
