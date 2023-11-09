@@ -17,7 +17,7 @@ class Channel extends Model
      * Attributes to cast.
      */
     protected $casts = [
-        'archived' => 'boolean'
+        'archived' => 'boolean',
     ];
 
     /**
@@ -80,6 +80,6 @@ class Channel extends Model
      */
     public static function withArchived()
     {
-        return (new static)->newQueryWithoutScope('active');
+        return (new static())->newQueryWithoutScope('active');
     }
 }

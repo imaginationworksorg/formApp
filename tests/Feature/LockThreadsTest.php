@@ -2,16 +2,16 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
+use Tests\TestCase;
 
 class LockThreadsTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    function non_administrators_may_not_lock_threads()
+    public function non_administrators_may_not_lock_threads()
     {
         $this->withExceptionHandling();
 
@@ -25,7 +25,7 @@ class LockThreadsTest extends TestCase
     }
 
     /** @test */
-    function administrators_can_lock_threads()
+    public function administrators_can_lock_threads()
     {
         $this->signInAdmin();
 
@@ -37,7 +37,7 @@ class LockThreadsTest extends TestCase
     }
 
     /** @test */
-    function administrators_can_unlock_threads()
+    public function administrators_can_unlock_threads()
     {
         $this->signInAdmin();
 
@@ -55,9 +55,9 @@ class LockThreadsTest extends TestCase
 
         $thread = create(\App\Thread::class, ['locked' => true]);
 
-        $this->post($thread->path() . '/replies', [
-            'body' => 'Foobar',
-            'user_id' => auth()->id()
+        $this->post($thread->path().'/replies', [
+            'body'    => 'Foobar',
+            'user_id' => auth()->id(),
         ])->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 }

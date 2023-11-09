@@ -2,9 +2,9 @@
 
 namespace Tests\Console;
 
+use Illuminate\Support\Facades\File;
 use Mockery;
 use Tests\TestCase;
-use Illuminate\Support\Facades\File;
 
 class InstallCommandTest extends TestCase
 {
@@ -25,7 +25,7 @@ class InstallCommandTest extends TestCase
     }
 
     /** @test */
-    function it_creates_the_example_file()
+    public function it_creates_the_example_file()
     {
         $this->assertFileNotExists('.env');
 
@@ -35,7 +35,7 @@ class InstallCommandTest extends TestCase
     }
 
     /** @test */
-    function it_generates_an_app_key()
+    public function it_generates_an_app_key()
     {
         $key = 'APP_KEY';
 
@@ -45,7 +45,7 @@ class InstallCommandTest extends TestCase
     }
 
     /** @test */
-    function it_optionally_migrates_the_database()
+    public function it_optionally_migrates_the_database()
     {
         $this->partialMock(['confirm', 'call'], function ($mock) {
             $mock->shouldReceive('confirm')->once()->andReturn(true);
@@ -58,7 +58,7 @@ class InstallCommandTest extends TestCase
     }
 
     /** @test */
-    function it_sets_the_database_env_config()
+    public function it_sets_the_database_env_config()
     {
         $this->partialMock(['ask', 'askHiddenWithDefault'], function ($mock) {
             $mock->shouldReceive('ask')->with('Database name')->andReturn('mydatabase');

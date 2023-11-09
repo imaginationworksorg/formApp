@@ -10,13 +10,14 @@ class Spam
      * @var array
      */
     protected $inspections = [
-        InvalidKeywords::class
+        InvalidKeywords::class,
     ];
 
     /**
      * Detect spam.
      *
-     * @param  string $body
+     * @param string $body
+     *
      * @return bool
      */
     public function detect($body)

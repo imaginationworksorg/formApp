@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use App\User;
-use Tests\TestCase;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
+use Tests\TestCase;
 
 class LeaderboardTest extends TestCase
 {
@@ -16,7 +16,7 @@ class LeaderboardTest extends TestCase
     {
         collect([1, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])->each(function ($reputation) {
             create(User::class, [
-                'reputation' => $reputation
+                'reputation' => $reputation,
             ]);
         });
 

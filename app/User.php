@@ -3,12 +3,13 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasReputation;
+    use Notifiable;
+    use HasReputation;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'avatar_path'
+        'avatar_path',
     ];
 
     /**
@@ -28,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'isAdmin'
+        'isAdmin',
     ];
 
     /**
@@ -48,8 +49,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'confirmed' => 'boolean',
-        'reputation' => 'integer'
+        'confirmed'  => 'boolean',
+        'reputation' => 'integer',
     ];
 
     /**
@@ -142,7 +143,8 @@ class User extends Authenticatable
     /**
      * Get the path to the user's avatar.
      *
-     * @param  string $avatar
+     * @param string $avatar
+     *
      * @return string
      */
     public function getAvatarPathAttribute($avatar)
@@ -153,7 +155,8 @@ class User extends Authenticatable
     /**
      * Get the cache key for when a user reads a thread.
      *
-     * @param  Thread $thread
+     * @param Thread $thread
+     *
      * @return string
      */
     public function visitedThreadCacheKey($thread)
