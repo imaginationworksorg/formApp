@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use App\Trending;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class TrendingThreadsTest extends TestCase
 {

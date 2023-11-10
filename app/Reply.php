@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-    use Favoritable, RecordsActivity;
+    use Favoritable;
+    use RecordsActivity;
 
     /**
      * Don't auto-apply mass assignment protection.
@@ -119,7 +120,8 @@ class Reply extends Model
     /**
      * Access the body attribute.
      *
-     * @param  string $body
+     * @param string $body
+     *
      * @return string
      */
     public function getBodyAttribute($body)

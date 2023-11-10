@@ -59,9 +59,9 @@ Route::get('api/leaderboard', 'Api\LeaderboardController@index')->name('api.lead
 Route::get('leaderboard', 'LeaderboardController@index')->name('leaderboard.index');
 
 Route::group([
-    'prefix' => 'admin',
+    'prefix'     => 'admin',
     'middleware' => 'admin',
-    'namespace' => 'Admin'
+    'namespace'  => 'Admin',
 ], function () {
     Route::get('', 'DashboardController@index')->name('admin.dashboard.index');
     Route::post('channels', 'ChannelsController@store')->name('admin.channels.store');

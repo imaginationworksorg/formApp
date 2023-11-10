@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Inspections\Spam;
+use Tests\TestCase;
 
 class SpamTest extends TestCase
 {

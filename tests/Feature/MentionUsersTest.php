@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Thread;
 use App\Mentions;
-use Tests\TestCase;
-use Illuminate\Support\Facades\Notification;
+use App\Thread;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
+use Tests\TestCase;
 
 class MentionUsersTest extends TestCase
 {
@@ -25,7 +25,7 @@ class MentionUsersTest extends TestCase
 
         // And JohnDoe create a new thread and mentions @JaneDoe.
         $thread = make(\App\Thread::class, [
-            'body' => 'Hey @JaneDoe check this out.'
+            'body' => 'Hey @JaneDoe check this out.',
         ]);
 
         $this->post(route('threads'), $thread->toArray() + ['g-recaptcha-response' => 'token']);
@@ -55,10 +55,10 @@ class MentionUsersTest extends TestCase
 
         // And JohnDoe replies to that thread and mentions @JaneDoe.
         $reply = make(\App\Reply::class, [
-            'body' => 'Hey @JaneDoe check this out.'
+            'body' => 'Hey @JaneDoe check this out.',
         ]);
 
-        $this->json('post', $thread->path() . '/replies', $reply->toArray());
+        $this->json('post', $thread->path().'/replies', $reply->toArray());
 
         // Then @JaneDoe should receive a notification.
         $this->assertCount(1, $jane->notifications);

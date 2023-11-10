@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Admin;
 
-use App\User;
 use App\Channel;
-use Tests\TestCase;
-use Symfony\Component\HttpFoundation\Response;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
+use Tests\TestCase;
 
 class ChannelAdministrationTest extends TestCase
 {
@@ -45,9 +45,9 @@ class ChannelAdministrationTest extends TestCase
     public function an_administrator_can_create_a_channel()
     {
         $response = $this->createChannel([
-            'name' => 'php',
+            'name'        => 'php',
             'description' => 'This is the channel for discussing all things PHP.',
-            'color' => '#FF0000',
+            'color'       => '#FF0000',
         ]);
 
         $this->get($response->headers->get('Location'))
@@ -63,10 +63,10 @@ class ChannelAdministrationTest extends TestCase
         $this->patch(
             route('admin.channels.update', ['channel' => create(\App\Channel::class)->slug]),
             $updatedChannel = [
-                'name' => 'altered',
+                'name'        => 'altered',
                 'description' => 'altered channel description',
-                'color' => '#00ff00',
-                'archived' => true
+                'color'       => '#00ff00',
+                'archived'    => true,
             ]
         );
 
@@ -87,10 +87,10 @@ class ChannelAdministrationTest extends TestCase
         $this->patch(
             route('admin.channels.update', ['channel' => $channel->slug]),
             [
-                'name' => 'altered',
+                'name'        => 'altered',
                 'description' => 'altered channel description',
-                'color' => '#000000',
-                'archived' => true
+                'color'       => '#000000',
+                'archived'    => true,
             ]
         );
 
@@ -133,10 +133,10 @@ class ChannelAdministrationTest extends TestCase
         $this->patch(
             route('admin.channels.update', $channel),
             [
-                'name' => 'altered',
+                'name'        => 'altered',
                 'description' => 'altered channel description',
-                'color' => '#000000',
-                'archived' => false
+                'color'       => '#000000',
+                'archived'    => false,
             ]
         );
 

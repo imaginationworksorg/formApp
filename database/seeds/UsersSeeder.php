@@ -16,36 +16,36 @@ class UsersSeeder extends Seeder
 
         collect([
             [
-                'name' => 'John Doe',
+                'name'     => 'John Doe',
                 'username' => 'johndoe',
-                'email' => 'john@example.com',
-                'password' => bcrypt('password')
+                'email'    => 'john@example.com',
+                'password' => bcrypt('password'),
             ],
             [
-                'name' => 'Indiana Jones',
+                'name'     => 'Indiana Jones',
                 'username' => 'rotla1981',
-                'email' => 'indy@example.com',
-                'password' => bcrypt('password')
+                'email'    => 'indy@example.com',
+                'password' => bcrypt('password'),
             ],
             [
-                'name' => 'Ben Solo',
+                'name'     => 'Ben Solo',
                 'username' => 'KyloRen',
-                'email' => 'kylo@example.com',
-                'password' => bcrypt('password')
+                'email'    => 'kylo@example.com',
+                'password' => bcrypt('password'),
             ],
             [
-                'name' => 'Marty McFly',
+                'name'     => 'Marty McFly',
                 'username' => '121gigawatts',
-                'email' => 'calvin@example.com',
-                'password' => bcrypt('password')
+                'email'    => 'calvin@example.com',
+                'password' => bcrypt('password'),
             ],
         ])->each(function ($user) {
             factory(User::class)->create(
                 [
-                    'name' => $user['name'],
+                    'name'     => $user['name'],
                     'username' => $user['username'],
-                    'email' => $user['email'],
-                    'password' => bcrypt('password')
+                    'email'    => $user['email'],
+                    'password' => bcrypt('password'),
                 ]
             );
         });

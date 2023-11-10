@@ -56,7 +56,8 @@ class InstallCommand extends Command
     /**
      * Update the .env file from an array of $key => $value pairs.
      *
-     * @param  array $updatedValues
+     * @param array $updatedValues
+     *
      * @return void
      */
     protected function updateEnvironmentFile($updatedValues)
@@ -97,7 +98,7 @@ class InstallCommand extends Command
     {
         return [
             'DB_DATABASE' => $this->ask('Database name'),
-            'DB_PORT' => $this->ask('Database port', 3306),
+            'DB_PORT'     => $this->ask('Database port', 3306),
             'DB_USERNAME' => $this->ask('Database user'),
             'DB_PASSWORD' => $this->askHiddenWithDefault('Database password (leave blank for no password)'),
         ];
@@ -108,7 +109,7 @@ class InstallCommand extends Command
      */
     protected function createEnvFile()
     {
-        if (! file_exists('.env')) {
+        if (!file_exists('.env')) {
             copy('.env.example', '.env');
 
             $this->line('.env file successfully created');
@@ -119,6 +120,7 @@ class InstallCommand extends Command
      * Migrate the db with the new credentials.
      *
      * @param array $credentials
+     *
      * @return void
      */
     protected function migrateDatabaseWithFreshCredentials($credentials)
@@ -141,8 +143,9 @@ class InstallCommand extends Command
     /**
      * Prompt the user for optional input but hide the answer from the console.
      *
-     * @param  string  $question
-     * @param  bool    $fallback
+     * @param string $question
+     * @param bool   $fallback
+     *
      * @return string
      */
     public function askHiddenWithDefault($question, $fallback = true)

@@ -2,15 +2,15 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class FavoritesTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    function guests_can_not_favorite_anything()
+    public function guests_can_not_favorite_anything()
     {
         $this->withExceptionHandling()
             ->post('replies/1/favorites')
@@ -44,7 +44,7 @@ class FavoritesTest extends TestCase
     }
 
     /** @test */
-    function an_authenticated_user_may_only_favorite_a_reply_once()
+    public function an_authenticated_user_may_only_favorite_a_reply_once()
     {
         $this->signIn();
 
