@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Channel;
-use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class ChannelsController extends Controller
 {
@@ -27,7 +27,7 @@ class ChannelsController extends Controller
      */
     public function create()
     {
-        return view('admin.channels.create', ['channel' => new Channel]);
+        return view('admin.channels.create', ['channel' => new Channel()]);
     }
 
     /**
@@ -49,10 +49,10 @@ class ChannelsController extends Controller
     {
         $channel->update(
             request()->validate([
-                'name' => ['required', Rule::unique('channels')->ignore($channel->id)],
+                'name'        => ['required', Rule::unique('channels')->ignore($channel->id)],
                 'description' => 'required',
-                'color' => 'required',
-                'archived' => 'required|boolean'
+                'color'       => 'required',
+                'archived'    => 'required|boolean',
             ])
         );
 
@@ -75,8 +75,8 @@ class ChannelsController extends Controller
     {
         $channel = Channel::create(
             request()->validate([
-                'name' => 'required|unique:channels',
-                'color' => 'required',
+                'name'        => 'required|unique:channels',
+                'color'       => 'required',
                 'description' => 'required',
             ])
         );

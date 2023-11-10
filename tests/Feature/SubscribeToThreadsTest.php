@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class SubscribeToThreadsTest extends TestCase
 {
@@ -18,7 +18,7 @@ class SubscribeToThreadsTest extends TestCase
         $thread = create(\App\Thread::class);
 
         // And the user subscribes to the thread...
-        $this->post($thread->path() . '/subscriptions');
+        $this->post($thread->path().'/subscriptions');
 
         $this->assertCount(1, $thread->fresh()->subscriptions);
     }
@@ -32,7 +32,7 @@ class SubscribeToThreadsTest extends TestCase
 
         $thread->subscribe();
 
-        $this->delete($thread->path() . '/subscriptions');
+        $this->delete($thread->path().'/subscriptions');
 
         $this->assertCount(0, $thread->subscriptions);
     }

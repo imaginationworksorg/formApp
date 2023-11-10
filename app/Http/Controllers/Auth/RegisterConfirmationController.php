@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class RegisterConfirmationController extends Controller
 {
@@ -16,7 +16,7 @@ class RegisterConfirmationController extends Controller
     {
         $user = User::where('confirmation_token', request('token'))->first();
 
-        if (! $user) {
+        if (!$user) {
             return redirect(route('threads'))->with('flash', 'Unknown token.');
         }
 

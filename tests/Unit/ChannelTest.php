@@ -3,10 +3,10 @@
 namespace Tests\Feature;
 
 use App\Channel;
-use Tests\TestCase;
-use PHPUnit\Framework\Assert;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Assert;
+use Tests\TestCase;
 
 class ChannelTest extends TestCase
 {
@@ -21,7 +21,7 @@ class ChannelTest extends TestCase
 
             $this->zip($items)->each(function ($pair) {
                 [$actual, $expected] = $pair;
-                
+
                 Assert::assertTrue($actual->is($expected));
             });
         });

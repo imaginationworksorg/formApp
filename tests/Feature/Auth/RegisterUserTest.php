@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Auth;
 
-use App\User;
-use Tests\TestCase;
 use App\Mail\PleaseConfirmYourEmail;
+use App\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class RegisterUserTest extends TestCase
 {
@@ -25,10 +25,10 @@ class RegisterUserTest extends TestCase
     public function users_can_register_an_account()
     {
         $response = $this->post(route('register'), [
-            'name' => 'John Doe',
-            'username' => 'johndoe',
-            'email' => 'johndoe@example.com',
-            'password' => 'secret',
+            'name'                  => 'John Doe',
+            'username'              => 'johndoe',
+            'email'                 => 'johndoe@example.com',
+            'password'              => 'secret',
             'password_confirmation' => 'secret',
         ]);
 
@@ -214,7 +214,7 @@ class RegisterUserTest extends TestCase
         $this->from(route('register'));
 
         $response = $this->post(route('register'), $this->validParams([
-            'email' => substr(str_repeat('a', 256) . '@example.com', -256),
+            'email' => substr(str_repeat('a', 256).'@example.com', -256),
         ]));
 
         $response->assertRedirect(route('register'));
@@ -263,8 +263,8 @@ class RegisterUserTest extends TestCase
         $this->from(route('register'));
 
         $response = $this->post(route('register'), $this->validParams([
-            'password' => 'foo',
-            'password_confirmation' => 'bar'
+            'password'              => 'foo',
+            'password_confirmation' => 'bar',
         ]));
 
         $response->assertRedirect(route('register'));
@@ -280,7 +280,7 @@ class RegisterUserTest extends TestCase
         $this->from(route('register'));
 
         $response = $this->post(route('register'), $this->validParams([
-            'password' => 'foo',
+            'password'              => 'foo',
             'password_confirmation' => 'foo',
         ]));
 
@@ -293,10 +293,10 @@ class RegisterUserTest extends TestCase
     private function validParams($overrides = [])
     {
         return array_merge([
-            'name' => 'John Doe',
-            'username' => 'johndoe',
-            'email' => 'johndoe@example.com',
-            'password' => 'secret',
+            'name'                  => 'John Doe',
+            'username'              => 'johndoe',
+            'email'                 => 'johndoe@example.com',
+            'password'              => 'secret',
             'password_confirmation' => 'secret',
         ], $overrides);
     }

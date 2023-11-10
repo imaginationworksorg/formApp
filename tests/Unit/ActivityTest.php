@@ -4,8 +4,8 @@ namespace Tests\Feature;
 
 use App\Activity;
 use Carbon\Carbon;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ActivityTest extends TestCase
 {
@@ -19,10 +19,10 @@ class ActivityTest extends TestCase
         $thread = create(\App\Thread::class);
 
         $this->assertDatabaseHas('activities', [
-            'type' => 'created_thread',
-            'user_id' => auth()->id(),
-            'subject_id' => $thread->id,
-            'subject_type' => \App\Thread::class
+            'type'         => 'created_thread',
+            'user_id'      => auth()->id(),
+            'subject_id'   => $thread->id,
+            'subject_type' => \App\Thread::class,
         ]);
 
         $activity = Activity::first();

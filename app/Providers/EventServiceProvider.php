@@ -14,11 +14,11 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         \App\Events\ThreadReceivedNewReply::class => [
             \App\Listeners\NotifyMentionedUsers::class,
-            \App\Listeners\NotifySubscribers::class
+            \App\Listeners\NotifySubscribers::class,
         ],
 
         \App\Events\ThreadWasPublished::class => [
-            \App\Listeners\NotifyMentionedUsers::class
+            \App\Listeners\NotifyMentionedUsers::class,
         ],
     ];
 

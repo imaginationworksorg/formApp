@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Activity;
+use App\User;
 
 class ProfilesController extends Controller
 {
@@ -15,14 +15,15 @@ class ProfilesController extends Controller
     public function index(User $user)
     {
         return [
-            'activities' => Activity::feed($user)
+            'activities' => Activity::feed($user),
         ];
     }
 
     /**
      * Show the user's profile.
      *
-     * @param  User $user
+     * @param User $user
+     *
      * @return \Response
      */
     public function show(User $user)
